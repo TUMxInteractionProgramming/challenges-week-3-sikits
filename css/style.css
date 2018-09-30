@@ -27,13 +27,41 @@ button, strong {
 /* APP BAR */
 
 /* #4 #sweat address both #app-bar s */
+/* 5.2 reworking app bars according to material design guide */
 h1 {
+    font-size: 20px;
+    line-height: 32px;
+    height: 32px;
+    vertical-align: middle;
+    padding: 16px;
     background-color: #3F51B5;
     color: white;
 }
 
+/* 5.2 reworking app bars according to material design guide 
+   getting some space for the logo */
+#app-bar-left {
+    padding-left: 72px;
+}
+
+/* 5.2 reworking app bars according to material design guide 
+   place the logo */
+#app-bar-left img {
+    position: fixed;
+    top: 8px;
+    left: 16px;
+}
 
 /* CHANNELS LIST */
+
+/* #5.1 split the screen */
+#channels {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 40%;
+}
 
 /* #4 #sweat #channels */
 ul {
@@ -41,6 +69,13 @@ ul {
     background-color: white;
     /* #3 #channels #bullets removed */
     list-style-type: none;
+    /* 5.2 canalize channels - scrolling */
+    position: inherit;
+    top: 64px;
+    bottom: 72px; /* space for tab bar */
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 li {
@@ -64,10 +99,27 @@ li img {
     vertical-align: middle;
 }
 
+/* 5.2 canalize channels - channel inline icons */
+.channel-meta {
+    position: absolute;
+    right: 0px;
+    /* this one corrects the middle alignment */
+    margin: -4px;
+    vertical-align: middle;
+}
+
 /* TAB BAR */
 
 /* #4 #sweat #tab-bar */
-#tab-bar {
+#tab-bar, #chat-bar {
+    /* 5.3 bottom aligning tab bar */
+    position: inherit;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    /* 5.3 flexifying the tab bar */
+    display: flex;
+    justify-content: space-around;
     /* #3 #tab-bar #container should be white */
     background-color: white;
     /* #3 #tab-bar #container has all buttons centered */
@@ -98,8 +150,46 @@ li img {
     border-bottom: 4px solid #3F51B5;
 }
 
+/* 5.5 different style for chat-bar */
+#chat-bar {
+    justify-content: left;
+    align-items: flex-start;
+}
 
+/* 5.6 style for the emoji box */
+#emojis {
+    position: inherit;
+    top: -640px;
+    background-color: white;
+    border: 1px solid black;
+    width: 320px;
+    height: 320px;
+    overflow-y: auto;
+    font-size: 28px;
+    padding: 16px;
+    margin: 284px 0px 0px 16px;
+}
 /* MESSAGES */
+
+/* #5.1 split the screen */
+#chat {
+    position: absolute;
+    top: 0px;
+    left: 40%;
+    height: 100%;
+    width: 60%;
+}
+
+/* 5.6 chat list scrolling */
+.chatlist {
+    position: inherit;
+    top: 64px;
+    bottom: 72px; /* space for tab bar */
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 /* #4 select #specific #messages by class and re-assign element styles according to their #hierarchy in a nested way */
 .message {
     /* #3 #chat #width*/
@@ -107,13 +197,14 @@ li img {
 
     /* #4 align all #messages using #margins */
     margin-left: 2.5%;
-
-    /* #4 #message distance to next message container*/
-    margin-bottom: 8px;
 }
 
-
 .message h3 {
+    /* 5.4 even distribution of meta-data */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
     font-size: medium;
 }
 
@@ -133,6 +224,10 @@ li img {
 }
 
 .message button {
+    /* 5.4 repositioning of +5min buttons */
+    float: right;
+    margin: -28px 8px 0px 0px;
+
     background-color: #CDDC39;
     color: black;
     text-transform: uppercase;
